@@ -3,6 +3,7 @@ const routes = require('./controllers');
 
 const path = require('path');
 const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers');
 
 const session = require('express-session');
 
@@ -24,7 +25,7 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
